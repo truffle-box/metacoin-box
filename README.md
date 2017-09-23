@@ -12,6 +12,6 @@ After adding your libraries and code:
 
 3. Delete the template images and replace them with your art. Be sure your art's filenames don't have -template in them.
 
-4. Customize the box configuration file `box-config.json` if necessary.
+4. Customize the box configuration file (`box-config.json`) if necessary.
 
 See [the Truffle Box section of our documentation](http://truffleframework.com/) for more info.
