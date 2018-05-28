@@ -1,63 +1,40 @@
-var MetaCoin = artifacts.require("./MetaCoin.sol");
+const MetaCoin = artifacts.require('./MetaCoin.sol');
 
-contract('MetaCoin', function(accounts) {
-  it("should put 10000 MetaCoin in the first account", function() {
-    return MetaCoin.deployed().then(function(instance) {
-      return instance.getBalance.call(accounts[0]);
-    }).then(function(balance) {
-      assert.equal(balance.valueOf(), 10000, "10000 wasn't in the first account");
-    });
-  });
-  it("should call a function that depends on a linked library", function() {
-    var meta;
-    var metaCoinBalance;
-    var metaCoinEthBalance;
+contract('MetaCoin', (accounts) => {
+  it('should put 10000 MetaCoin in the first account', async () => {
+    const metaCoinInstance = await MetaCoin.deployed();
+    const balance = await metaCoinInstance.getBalance.call(accounts[0]);
 
-    return MetaCoin.deployed().then(function(instance) {
-      meta = instance;
-      return meta.getBalance.call(accounts[0]);
-    }).then(function(outCoinBalance) {
-      metaCoinBalance = outCoinBalance.toNumber();
-      return meta.getBalanceInEth.call(accounts[0]);
-    }).then(function(outCoinBalanceEth) {
-      metaCoinEthBalance = outCoinBalanceEth.toNumber();
-    }).then(function() {
-      assert.equal(metaCoinEthBalance, 2 * metaCoinBalance, "Library function returned unexpected function, linkage may be broken");
-    });
+    assert.equal(balance.valueOf(), 10000, "10000 wasn't in the first account");
   });
-  it("should send coin correctly", function() {
-    var meta;
+  it('should call a function that depends on a linked library', async () => {
+    const metaCoinInstance = await MetaCoin.deployed();
+    const metaCoinBalance = (await metaCoinInstance.getBalance.call(accounts[0])).toNumber();
+    const metaCoinEthBalance = (await metaCoinInstance.getBalanceInEth.call(accounts[0])).toNumber();
+
+    assert.equal(metaCoinEthBalance, 2 * metaCoinBalance, 'Library function returned unexpected function, linkage may be broken');
+  });
+  it('should send coin correctly', async () => {
+    const metaCoinInstance = await MetaCoin.deployed();
+
+    // Setup 2 accounts.
+    const accountOne = accounts[0];
+    const accountTwo = accounts[1];
 
     // Get initial balances of first and second account.
-    var account_one = accounts[0];
-    var account_two = accounts[1];
+    const accountOneStartingBalance = (await metaCoinInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoStartingBalance = (await metaCoinInstance.getBalance.call(accountTwo)).toNumber();
 
-    var account_one_starting_balance;
-    var account_two_starting_balance;
-    var account_one_ending_balance;
-    var account_two_ending_balance;
+    // Make transaction from first account to second.
+    const amount = 10;
+    await metaCoinInstance.sendCoin(accountTwo, amount, { from: accountOne });
 
-    var amount = 10;
+    // Get balances of first and second account after the transactions.
+    const accountOneEndingBalance = (await metaCoinInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoEndingBalance = (await metaCoinInstance.getBalance.call(accountTwo)).toNumber();
 
-    return MetaCoin.deployed().then(function(instance) {
-      meta = instance;
-      return meta.getBalance.call(account_one);
-    }).then(function(balance) {
-      account_one_starting_balance = balance.toNumber();
-      return meta.getBalance.call(account_two);
-    }).then(function(balance) {
-      account_two_starting_balance = balance.toNumber();
-      return meta.sendCoin(account_two, amount, {from: account_one});
-    }).then(function() {
-      return meta.getBalance.call(account_one);
-    }).then(function(balance) {
-      account_one_ending_balance = balance.toNumber();
-      return meta.getBalance.call(account_two);
-    }).then(function(balance) {
-      account_two_ending_balance = balance.toNumber();
 
-      assert.equal(account_one_ending_balance, account_one_starting_balance - amount, "Amount wasn't correctly taken from the sender");
-      assert.equal(account_two_ending_balance, account_two_starting_balance + amount, "Amount wasn't correctly sent to the receiver");
-    });
+    assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
+    assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
   });
 });
