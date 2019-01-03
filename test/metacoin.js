@@ -1,4 +1,4 @@
-var MetaCoin = artifacts.require("./MetaCoin.sol");
+const MetaCoin = artifacts.require("MetaCoin");
 
 contract('MetaCoin', function(accounts) {
   it("should put 10000 MetaCoin in the first account", function() {
