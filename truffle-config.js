@@ -16,6 +16,23 @@ module.exports = {
   //    port: 7545,
   //    network_id: "*"
   //  }
-  //}
+  //},
+
   //
+  db: {
+    // Truffle-DB is disabled by default. 
+    enabled: false
+
+    // You can also use a local db storage adapter by uncommenting this section
+    //
+    //, adapter: {
+    //   name: "sqlite",
+    //   settings: {
+    //     // You may also choose a differnt directory name
+    //     // Note. it will alwasy be relative to Project Root
+    //     // (the same folder where this file is located.
+    //     directory: ".truffle-db"  
+    //   }
+    // }                             
+  }
 };
