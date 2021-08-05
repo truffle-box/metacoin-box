@@ -22,18 +22,18 @@ module.exports = {
   db: {
     // Truffle-DB is disabled by default. 
     enabled: false,
-    host: "127.0.0.1"
+    host: "127.0.0.1",
 
     // You can also use a local db storage adapter by uncommenting this section
     //
-    //, adapter: {
-    //   name: "sqlite",
-    //   settings: {
-    //     // You may also choose a differnt directory name
-    //     // Note. it will alwasy be relative to Project Root
-    //     // (the same folder where this file is located.
-    //     directory: ".truffle-db"  
-    //   }
-    // }                             
+    adapter: {
+      name: "sqlite",
+      settings: {
+        // You may also choose a differnt directory name
+        // Note. it will alwasy be relative to Project Root
+        // (the same folder where this file is located.
+        directory: ".truffle-db"  
+      }
+    }                             
   }
 };
