@@ -29,10 +29,11 @@ module.exports = {
     adapter: {
       name: "sqlite",
       settings: {
-        // You may also choose a different directory name
-        // Note. it will always be relative to the Project root
-        // (the same folder where this file is located.)
-        directory: ".truffle-db"  
+        // You may specify a directory name that is an absolute path, or one
+        // relative to the Project Root, the same folder where this file is
+        // located. For example, the following defines a `.db` directory in
+        // Project Root.
+        directory: ".db"  
       }
     }                             
   }
