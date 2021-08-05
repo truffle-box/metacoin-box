@@ -30,7 +30,7 @@ module.exports = {
       name: "sqlite",
       settings: {
         // You may also choose a different directory name
-        // Note. it will alwasy be relative to Project Root
+        // Note. it will always be relative to the Project root
         // (the same folder where this file is located.
         directory: ".truffle-db"  
       }
