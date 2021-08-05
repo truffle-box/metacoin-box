@@ -18,23 +18,22 @@ module.exports = {
   //  }
   //},
 
-  //
-  db: {
-    // Truffle-DB is disabled by default. 
-    enabled: false,
-    host: "127.0.0.1",
+  //db: {
+  //  // Truffle-DB is disabled by default. 
+  //  enabled: true,
+  //  host: "127.0.0.1",
 
-    // You can also use a local db storage adapter by uncommenting this section
-    //
-    adapter: {
-      name: "sqlite",
-      settings: {
-        // You may specify a directory name that is an absolute path, or one
-        // relative to the Project Root, the same folder where this file is
-        // located. For example, the following defines a `.db` directory in
-        // Project Root.
-        directory: ".db"  
-      }
-    }                             
-  }
+  //  // You can also use a local db storage adapter by uncommenting this section
+  //  //
+  //  adapter: {
+  //    name: "sqlite",
+  //    settings: {
+  //      // You may specify a directory name that is an absolute path, or one
+  //      // relative to the Project Root, the same folder where this file is
+  //      // located. For example, the following defines a `.db` directory in
+  //      // Project Root.
+  //      directory: ".db"  
+  //    }
+  //  }                             
+  //}
 };
