@@ -31,7 +31,7 @@ module.exports = {
       settings: {
         // You may also choose a different directory name
         // Note. it will always be relative to the Project root
-        // (the same folder where this file is located.
+        // (the same folder where this file is located.)
         directory: ".truffle-db"  
       }
     }                             
