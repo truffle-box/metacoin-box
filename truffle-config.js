@@ -21,7 +21,8 @@ module.exports = {
   //
   db: {
     // Truffle-DB is disabled by default. 
-    enabled: false
+    enabled: false,
+    host: "127.0.0.1"
 
     // You can also use a local db storage adapter by uncommenting this section
     //
