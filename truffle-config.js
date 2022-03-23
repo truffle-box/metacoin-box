@@ -1,9 +1,9 @@
 module.exports = {
   // Uncommenting the defaults below
   // provides for an easier quick-start with Ganache.
-  // You can also follow this format for other networks;
-  // see <https://trufflesuite.com/docs/truffle/reference/configuration>
-  // for more details on how to specify configuration options!
+  // You can also follow this format for other networks.
+  // See details at: https://trufflesuite.com/docs/truffle/reference/configuration
+  // on how to specify configuration options!
   //
   //networks: {
   //  development: {
