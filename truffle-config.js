@@ -1,41 +1,69 @@
+/**
+ * Use this file to configure your truffle project. It's seeded with some
+ * common settings for different networks and features like migrations,
+ * compilation and testing. Uncomment the ones you need or modify
+ * them to suit your project as necessary.
+ *
+ * More information about configuration can be found at:
+ *
+ * https://trufflesuite.com/docs/truffle/reference/configuration
+ *
+ * To deploy via Infura you'll need a wallet provider (like @truffle/hdwallet-provider)
+ * to sign your transactions before they're sent to a remote public node. Infura accounts
+ * are available for free at: infura.io/register.
+ *
+ * You'll also need a mnemonic - the twelve word phrase the wallet uses to generate
+ * public/private key pairs. If you're publishing your code to GitHub make sure you load this
+ * phrase from a file you've .gitignored so it doesn't accidentally become public.
+ *
+ */
+
+// require('dotenv').config();
+// const mnemonic = process.env["MNEMONIC"];
+// const infuraProjectId = process.env["INFURA_PROJECT_ID"];
+ 
+// const HDWalletProvider = require('@truffle/hdwallet-provider');
+
 module.exports = {
-  // Uncommenting the defaults below 
-  // provides for an easier quick-start with Ganache.
-  // You can also follow this format for other networks;
-  // see <http://truffleframework.com/docs/advanced/configuration>
-  // for more details on how to specify configuration options!
-  //
-  //networks: {
-  //  development: {
-  //    host: "127.0.0.1",
-  //    port: 7545,
-  //    network_id: "*"
-  //  },
-  //  test: {
-  //    host: "127.0.0.1",
-  //    port: 7545,
-  //    network_id: "*"
-  //  }
-  //},
-  //
-  // Truffle DB is currently disabled by default; to enable it, change enabled:
-  // false to enabled: true. The default storage location can also be
-  // overridden by specifying the adapter settings, as shown in the commented code below.
-  //
-  // NOTE: It is not possible to migrate your contracts to truffle DB and you should
-  // make a backup of your artifacts to a safe location before enabling this feature.
-  //
-  // After you backed up your artifacts you can utilize db by running migrate as follows: 
-  // $ truffle migrate --reset --compile-all
-  //
-  // db: {
-    // enabled: false,
-    // host: "127.0.0.1",
-    // adapter: {
-    //   name: "sqlite",
-    //   settings: {
-    //     directory: ".db"
-    //   }
+  /**
+   * Networks define how you connect to your ethereum client and let you set the
+   * defaults web3 uses to send transactions. If you don't specify one truffle
+   * will spin up a development blockchain for you on port 9545 when you
+   * run `develop` or `test`. You can ask a truffle command to use a specific
+   * network from the command line, e.g
+   *
+   * $ truffle test --network <network-name>
+   */
+
+  networks: {
+    // Useful for testing. The `development` name is special - truffle uses it by default
+    // if it's defined here and no other network is specified at the command line.
+    // You should run a client (like ganache, geth, or parity) in a separate terminal
+    // tab if you use this network and you must also set the `host`, `port` and `network_id`
+    // options below to some value.
+    //
+    // development: {
+    //  host: "127.0.0.1",     // Localhost (default: none)
+    //  port: 8545,            // Standard Ethereum port (default: none)
+    //  network_id: "*",       // Any network (default: none)
+    // },
+    //
+    // goerli: {
+    //   provider: () => new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/${infuraProjectId}`),
+    //   network_id: 5,       // Goerli's id
+    //   chain_id: 5
     // }
-  // }
+  },
+
+  // Set default mocha options here, use special reporters etc.
+  mocha: {
+    // timeout: 100000
+  },
+
+  // Configure your compilers
+  compilers: {
+    solc: {
+      version: "0.8.13",      // Fetch exact version from solc-bin
+    }
+  }
 };
